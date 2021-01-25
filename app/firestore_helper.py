@@ -3,6 +3,7 @@ from firebase_admin import firestore
 COLLECTION_NAME = 'score-board'
 DOCUMENT_NAME = 'board1'
 
+
 # Following function is used for initializing database for the first time
 def initializeScoreboard(db):
     print("Initializing the board")
@@ -10,6 +11,7 @@ def initializeScoreboard(db):
     day1 = {'away': int(0),
             'home': int(0) }
     doc_ref.document(DOCUMENT_NAME).set(day1)
+
 
 # Following function is used for getting the score in case db is initialized, else initialize db and return score
 def getGoal(db):
@@ -25,9 +27,8 @@ def getGoal(db):
         return({'away': int(0), 'home': int(0) })           
 
 
-""" 
-Following function is used for updating scoreboard, incase db is not initailized, initialize db and return score
-"""
+
+# Following function is used for updating scoreboard, incase db is not initailized, initialize db and return score
 def updateScoreBoard(db,team):
     # [START update_data_transaction_result]
     transaction = db.transaction()
